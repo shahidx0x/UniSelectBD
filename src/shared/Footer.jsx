@@ -1,354 +1,248 @@
 const Footer = () => {
   return (
-    <div className="bg-gray-800 px-4 py-9 md:px-6 md:py-12 lg:px-20 lg:py-12">
-      <div className="flex flex-col md:flex-row md:justify-between pb-10">
-        <div className="flex flex-col items-center">
-          <button className="w-full md:w-auto px-24 py-2 bg-white border rounded-md text-xl font-semibold leading-tight text-gray-800 hover:bg-gray-200 focus:ring-2 focus:outline-none focus:ring-gray-200 focus:ring-opacity-50">
-            Get started
-          </button>
-          <p className="pt-2 text-sm leading-none text-gray-300 cursor-pointer hover:underline">
-            Or see our plans
-          </p>
-        </div>
-        <div>
-          <p className="w-72 pt-9 md:py-0 text-sm leading-tight text-gray-300">
-            10:00 AM to 6 PM, Monday - Friday Semurh inc 800 bolystan street
-            suite 2475, Bostan MA
-          </p>
-        </div>
-      </div>
-
-      <div className="w-full px-8 border-white border rounded-md flex flex-col justify-start md:flex-row md:justify-between lg:justify-center gap-2 md:gap-20 py-6">
-        <p className="text-sm leading-none text-gray-300">
-          USA 800 Bolystan street,2475,Bostan MA
-        </p>
-        <div className="flex justify-start gap-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-mail"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="#e2e8f0"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+    <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+      <div className="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
+        <div className="md:max-w-md lg:col-span-2">
+          <a
+            href="/"
+            aria-label="Go home"
+            title="Company"
+            className="inline-flex items-center"
           >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <rect x="3" y="5" width="18" height="14" rx="2" />
-            <polyline points="3 7 12 13 21 7" />
-          </svg>
-          <p className="text-sm leading-none text-gray-300">mail@smrush .com</p>
-        </div>
-      </div>
-
-      <div className="pt-10 flex flex-col xl:flex-row justify-between">
-        <div className="flex flex-col md:gap-10">
-          <div className="flex items-start w-full">
-            <div className="pb-10 md:pb-0">
-              <h3 className="text-xl cursor-default font-semibold leading-tight text-white mb-8">
-                Product
-              </h3>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Email Marketing
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Website Builder
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Market Automation
-              </p>
-            </div>
-            <div className="pb-10 md:pb-0 2xl:pl-20 pl-16">
-              <h3 className="text-xl cursor-default font-semibold leading-tight text-white mb-8">
-                Support
-              </h3>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Generate lead
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Size Guide
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Shipping
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Payment Security
-              </p>
-            </div>
-            <div className="pb-10 md:pb-0 2xl:pl-20 pl-16 md:block hidden">
-              <h3 className="text-xl cursor-default font-semibold leading-tight text-white mb-8">
-                Solutions
-              </h3>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Generate Lead
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Self knowledge
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Work from home
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Engage customers
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Boost online sales
-              </p>
-            </div>
-            <div className="pb-10 md:pb-0 2xl:pl-20 pl-16 md:block hidden">
-              <h3 className="text-xl cursor-default font-semibold leading-tight text-white mb-8">
-                Visit us
-              </h3>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Mayfair
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Melbourne
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Wimbledon
-              </p>
-            </div>
-          </div>
-          <div className="flex items-start">
-            <div className="pb-10 md:pb-0 md:hidden">
-              <h3 className="text-xl cursor-default font-semibold leading-tight text-white mb-8">
-                Solutions
-              </h3>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Generate Lead
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Self knowledge
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Work from home
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Engage customers
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Boost online sales
-              </p>
-            </div>
-            <div className="pb-10 md:pb-0 pl-16 md:hidden">
-              <h3 className="text-xl cursor-default font-semibold leading-tight text-white mb-8">
-                Visit us
-              </h3>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Mayfair
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Melbourne
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Wimbledon
-              </p>
-            </div>
-          </div>
-          <div className="flex items-start w-full">
-            <div className="pb-10 md:pb-0">
-              <h3 className="text-xl cursor-default font-semibold leading-tight text-white mb-8">
-                Pricing
-              </h3>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Integration
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Affiliate program
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 mb-6">
-                Agency Partner
-              </p>
-            </div>
-            <div className="pb-10 md:pb-0 2xl:pl-20 pl-16">
-              <h3 className="text-xl cursor-default font-semibold leading-tight text-white pb-8">
-                Entreprenuer
-              </h3>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 pb-6">
-                Online Marketer
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 pb-6">
-                Marketing Manager
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 pb-6">
-                Mid and large companies
-              </p>
-            </div>
-            <div className="2xl:pl-20 md:pl-16 md:block hidden">
-              <h3 className="text-xl cursor-default font-semibold leading-tight text-white pb-8">
-                About Getresponce
-              </h3>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 pb-6">
-                Career
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 pb-6">
-                Api docs
-              </p>
-              <p className="text-sm cursor-pointer leading-none text-gray-300 pb-6">
-                Accessibility
-              </p>
-            </div>
-          </div>
-          <div className="2xl:pl-20 md:pl-16 md:hidden">
-            <h3 className="text-xl cursor-default font-semibold leading-tight text-white pb-8">
-              About Getresponce
-            </h3>
-            <p className="text-sm cursor-pointer leading-none text-gray-300 pb-6">
-              Career
+            <svg
+              className="w-8 text-deep-purple-accent-400"
+              viewBox="0 0 24 24"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeMiterlimit="10"
+              stroke="currentColor"
+              fill="none"
+            >
+              <rect x="3" y="1" width="7" height="12" />
+              <rect x="3" y="17" width="7" height="6" />
+              <rect x="14" y="1" width="7" height="6" />
+              <rect x="14" y="11" width="7" height="12" />
+            </svg>
+            <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+              Company
+            </span>
+          </a>
+          <div className="mt-4 lg:max-w-sm">
+            <p className="text-sm text-gray-800">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam.
             </p>
-            <p className="text-sm cursor-pointer leading-none text-gray-300 pb-6">
-              Api docs
-            </p>
-            <p className="text-sm cursor-pointer leading-none text-gray-300 pb-6">
-              Accessibility
+            <p className="mt-4 text-sm text-gray-800">
+              Eaque ipsa quae ab illo inventore veritatis et quasi architecto
+              beatae vitae dicta sunt explicabo.
             </p>
           </div>
         </div>
-
-        <div className="pt-16 md:pt-12 lg:pt-0">
-          <h3 className="text-xl font-semibold leading-tight text-white">
-            Blog
-          </h3>
-          <div className="pt-8 mb-6 flex justify-center cursor-pointer items-center flex-col md:flex-row md:justify-start gap-6">
-            <img
-              className="hidden lg:block"
-              src="https://i.ibb.co/qYT5Rfg/Rectangle-93.png"
-              alt="a workspace"
-            />
-            <img
-              className="block lg:hidden"
-              src="https://i.ibb.co/FxNmTwC/Rectangle-93-1.png"
-              alt="a workspace"
-            />
-            <p className="text-center md:text-left text-base font-semibold cursor-pointer leading-normal text-gray-100">
-              Email Marketing for beginners
+        <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
+          <div>
+            <p className="font-semibold tracking-wide text-gray-800">
+              Category
             </p>
+            <ul className="mt-2 space-y-2">
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  News
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  World
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  Games
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  References
+                </a>
+              </li>
+            </ul>
           </div>
-          <div className="mb-6 flex justify-center cursor-pointer items-center flex-col md:flex-row md:justify-start gap-6">
-            <img
-              className="hidden lg:block"
-              src="https://i.ibb.co/z88NZGh/Rectangle-94.png"
-              alt="a woman"
-            />
-            <img
-              className="block lg:hidden"
-              src="https://i.ibb.co/pnbjk3y/Rectangle-93-2.png"
-              alt="a woman"
-            />
-            <p className="text-center md:text-left text-base font-semibold cursor-pointer leading-normal text-gray-100">
-              Essential guide for dress
+          <div>
+            <p className="font-semibold tracking-wide text-gray-800">
+              Business
             </p>
+            <ul className="mt-2 space-y-2">
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  Web
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  eCommerce
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  Business
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  Entertainment
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  Portfolio
+                </a>
+              </li>
+            </ul>
           </div>
-          <div className="mb-6 flex justify-center cursor-pointer items-center flex-col md:flex-row md:justify-start gap-6">
-            <img
-              className="hidden lg:block"
-              src="https://i.ibb.co/vZYLsMs/Rectangle-95.png"
-              alt="a workspace"
-            />
-            <img
-              className="block lg:hidden"
-              src="https://i.ibb.co/qpCrNwx/Rectangle-93-3.png"
-              alt="a workspace"
-            />
-            <p className="text-center md:text-left text-base font-semibold leading-normal text-gray-100">
-              Essential guide for landing pages
-            </p>
+          <div>
+            <p className="font-semibold tracking-wide text-gray-800">Apples</p>
+            <ul className="mt-2 space-y-2">
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  Media
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  Brochure
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  Nonprofit
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  Educational
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  Projects
+                </a>
+              </li>
+            </ul>
           </div>
-          <div className="flex items-center md:justify-start justify-center">
-            <button className=" pt-8 hover:underline text-base font-medium leading-none text-white cursor-pointer">
-              View all posts
-            </button>
+          <div>
+            <p className="font-semibold tracking-wide text-gray-800">Cherry</p>
+            <ul className="mt-2 space-y-2">
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  Infopreneur
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  Personal
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  Wiki
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                >
+                  Forum
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-
-      <div className="pt-10 lg:pt-24 flex justify-center md:justify-start gap-12">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler cursor-pointer icon-tabler-brand-facebook"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="#ffffff"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
-        </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler cursor-pointer icon-tabler-brand-twitter"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="#ffffff"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
-        </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler cursor-pointer icon-tabler-brand-instagram"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="#ffffff"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <rect x="4" y="4" width="16" height="16" rx="4" />
-          <circle cx="12" cy="12" r="3" />
-          <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
-        </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler cursor-pointer icon-tabler-brand-youtube"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="#ffffff"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <rect x="3" y="5" width="18" height="14" rx="4" />
-          <path d="M10 9l5 3l-5 3z" />
-        </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler cursor-pointer icon-tabler-brand-pinterest"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="#ffffff"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <line x1="8" y1="20" x2="12" y2="11" />
-          <path d="M10.7 14c.437 1.263 1.43 2 2.55 2c2.071 0 3.75 -1.554 3.75 -4a5 5 0 1 0 -9.7 1.7" />
-          <circle cx="12" cy="12" r="9" />
-        </svg>
+      <div className="flex flex-col justify-between pt-5 pb-10 border-t sm:flex-row">
+        <p className="text-sm text-gray-600">
+          © Copyright 2020 Lorem Inc. All rights reserved.
+        </p>
+        <div className="flex items-center mt-4 space-x-4 sm:mt-0">
+          <a
+            href="/"
+            className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
+              <path d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z" />
+            </svg>
+          </a>
+          <a
+            href="/"
+            className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400"
+          >
+            <svg viewBox="0 0 30 30" fill="currentColor" className="h-6">
+              <circle cx="15" cy="15" r="4" />
+              <path d="M19.999,3h-10C6.14,3,3,6.141,3,10.001v10C3,23.86,6.141,27,10.001,27h10C23.86,27,27,23.859,27,19.999v-10   C27,6.14,23.859,3,19.999,3z M15,21c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S18.309,21,15,21z M22,9c-0.552,0-1-0.448-1-1   c0-0.552,0.448-1,1-1s1,0.448,1,1C23,8.552,22.552,9,22,9z" />
+            </svg>
+          </a>
+          <a
+            href="/"
+            className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
+              <path d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z" />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   );
 };
-
 export default Footer;
