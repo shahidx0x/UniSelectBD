@@ -1,9 +1,40 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [dropDown, setDropDown] = useState({
+    university: false,
+    programes: false,
+    plan: false,
+  });
+  const dropdownRef = useRef(null);
 
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setDropDown({
+        university: false,
+        programes: false,
+        plan: false,
+      });
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
     <div className=" px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div className="relative flex items-center justify-between">
@@ -29,52 +60,281 @@ export const Navbar = () => {
               <rect x="14" y="1" width="7" height="6" />
               <rect x="14" y="11" width="7" height="12" />
             </svg>
-            <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-              Company
+            <span className="ml-2 text-xl font-bold tracking-wide text-white">
+              UniSelectBD
             </span>
           </a>
-          <ul className="flex items-center hidden space-x-8 lg:flex">
-            <li>
-              <a
-                href="/"
-                aria-label="Our product"
-                title="Our product"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-              >
-                Product
-              </a>
-            </li>
-            <li>
-              <a
-                href="/"
-                aria-label="Our product"
-                title="Our product"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-              >
-                Features
-              </a>
-            </li>
-            <li>
-              <a
-                href="/"
-                aria-label="Product pricing"
-                title="Product pricing"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-              >
-                Pricing
-              </a>
-            </li>
-            <li>
-              <a
-                href="/"
-                aria-label="About us"
-                title="About us"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-              >
-                About us
-              </a>
-            </li>
-          </ul>
+          <Menubar>
+            <MenubarMenu>
+              <MenubarTrigger>Home</MenubarTrigger>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>Universities</MenubarTrigger>
+              <MenubarContent>
+                <MenubarItem>
+                  <Link to="/universities">Universities List</Link>
+                </MenubarItem>
+                <MenubarItem>Schoolership Programe</MenubarItem>
+                <MenubarItem>Blogs</MenubarItem>
+                <MenubarItem>Entry Requirements</MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>Programes</MenubarTrigger>
+              <MenubarContent>
+                <MenubarItem>Undergraduate</MenubarItem>
+                <MenubarItem>Postgraduate</MenubarItem>
+                <MenubarItem>PHD</MenubarItem>
+                <MenubarItem>MBBS</MenubarItem>
+                <MenubarItem>BDS</MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>Plan Your Study</MenubarTrigger>
+              <MenubarContent>
+                <MenubarItem>Accomodation</MenubarItem>
+                <MenubarItem>Education and Living Cost</MenubarItem>
+                <MenubarItem>Health and Safety</MenubarItem>
+                <MenubarItem>Do's and Dont</MenubarItem>
+                <MenubarItem>Work Permit</MenubarItem>
+                <MenubarItem>Support Services</MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>Our Team</MenubarTrigger>
+              <MenubarContent>
+                <MenubarItem>Administration</MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>FAQ</MenubarTrigger>
+            </MenubarMenu>
+            {/* <ul className="flex items-center hidden space-x-8 lg:flex">
+              <li>
+                <a
+                  href="/"
+                  aria-label="Our product"
+                  title="Our product"
+                  className="font-medium tracking-wide text-white transition-colors duration-200 "
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <div className="relative inline-block text-left">
+                  <div
+                    onClick={() =>
+                      setDropDown((prev) => ({
+                        ...prev,
+                        university: !prev.university,
+                      }))
+                    }
+                    aria-label="Our product"
+                    title="Our product"
+                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 cursor-pointer  text-white"
+                  >
+                    University
+                  </div>
+                  <div
+                    ref={dropdownRef}
+                    id="dropdownMenu"
+                    className={`origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none ${
+                      dropDown.university ? "z-10" : "hidden"
+                    }`}
+                    role="menu"
+                    aria-orientation="vertical"
+                    aria-labelledby="options-menu"
+                  >
+                    <div className="py-1" role="none">
+                      <Link
+                        to="/universities"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        University List
+                      </Link>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        Schoolership Programe
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        Blogs
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        Entry Requirements
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div className="relative inline-block text-left">
+                  <div
+                    onClick={() =>
+                      setDropDown((prev) => ({
+                        ...prev,
+                        programes: !prev.programes,
+                      }))
+                    }
+                    aria-label="Our product"
+                    title="Our product"
+                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 cursor-pointer  text-white"
+                  >
+                    Programes
+                  </div>
+                  <div
+                    ref={dropdownRef}
+                    id="dropdownMenu"
+                    className={`origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none ${
+                      dropDown.programes ? "z-10" : "hidden"
+                    }`}
+                    role="menu"
+                    aria-orientation="vertical"
+                    aria-labelledby="options-menu"
+                  >
+                    <div className="py-1" role="none">
+                      <Link
+                        to="/"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        Undergraduate
+                      </Link>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        Postgraduate
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        PHD
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        MBBS
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        BDS
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div className="relative inline-block text-left">
+                  <div
+                    onClick={() =>
+                      setDropDown((prev) => ({
+                        ...prev,
+                        plan: !prev.plan,
+                      }))
+                    }
+                    aria-label="Our product"
+                    title="Our product"
+                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 cursor-pointer  text-white"
+                  >
+                    Plan Your Stay
+                  </div>
+                  <div
+                    ref={dropdownRef}
+                    id="dropdownMenu"
+                    className={`origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none ${
+                      dropDown.plan ? "z-10" : "hidden"
+                    }`}
+                    role="menu"
+                    aria-orientation="vertical"
+                    aria-labelledby="options-menu"
+                  >
+                    <div className="py-1" role="none">
+                      <Link
+                        to="/"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        Accomodation
+                      </Link>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        Dos and Dont
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        Education and Living Cost
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        Health and Safety
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        Work Permit
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        Support and Service
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        role="menuitem"
+                      >
+                        Travel Guide
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <a
+                  href="/"
+                  aria-label="About us"
+                  title="About us"
+                  className="font-medium tracking-wide text-white transition-colors duration-200 "
+                >
+                  About us
+                </a>
+              </li>
+            </ul> */}
+          </Menubar>
         </div>
         <ul className="flex items-center hidden space-x-8 lg:flex">
           <li>
@@ -82,7 +342,7 @@ export const Navbar = () => {
               to="/login"
               aria-label="Sign in"
               title="Sign in"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              className="font-medium tracking-wide text-white transition-colors duration-200 "
             >
               Sign in
             </Link>
@@ -174,7 +434,7 @@ export const Navbar = () => {
                         href="/"
                         aria-label="Our product"
                         title="Our product"
-                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
                       >
                         Product
                       </a>
@@ -184,7 +444,7 @@ export const Navbar = () => {
                         href="/"
                         aria-label="Our product"
                         title="Our product"
-                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
                       >
                         Features
                       </a>
@@ -194,7 +454,7 @@ export const Navbar = () => {
                         href="/"
                         aria-label="Product pricing"
                         title="Product pricing"
-                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
                       >
                         Pricing
                       </a>
@@ -204,7 +464,7 @@ export const Navbar = () => {
                         href="/"
                         aria-label="About us"
                         title="About us"
-                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
                       >
                         About us
                       </a>
@@ -214,7 +474,7 @@ export const Navbar = () => {
                         href="/"
                         aria-label="Sign in"
                         title="Sign in"
-                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 "
                       >
                         Sign in
                       </a>

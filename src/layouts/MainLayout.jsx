@@ -5,7 +5,9 @@ import Footer from "../shared/Footer";
 const MainLayout = () => {
   return (
     <div className="bg-[#f2faff]">
-      <Navbar />
+      <div className="bg-deep-purple-accent-400">
+        <Navbar />
+      </div>
       <Outlet />
       <Footer />
     </div>
