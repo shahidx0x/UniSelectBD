@@ -6,6 +6,8 @@ import { Login } from "../pages/Login";
 import { Registration } from "../pages/Registration";
 import UserDashbordLayout from "../layouts/UserDashbordLayout";
 import { Universities } from "@/pages/Universities";
+import Profile from "@/pages/dashboard/users/Profile";
+import WishList from "@/pages/dashboard/users/WishList";
 
 export const router = createBrowserRouter([
   {
@@ -32,9 +34,18 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/dashbord/user",
+    path: "/dashboard/users",
     element: <UserDashbordLayout />,
     errorElement: <ErrorPage />,
-    children: [],
+    children: [
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+      {
+        path: "wishlist",
+        element: <WishList />,
+      },
+    ],
   },
 ]);

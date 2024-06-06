@@ -1,3 +1,4 @@
+import { Statistic } from "@/components/Statistics";
 import Blogs from "../components/Blogs";
 import ContactUs from "../components/ContactUs";
 
@@ -10,6 +11,7 @@ const Home = () => {
   return (
     <div>
       <Hero />
+      <Statistic />
       <UniversityList />
       <InfoBox />
       <Blogs />

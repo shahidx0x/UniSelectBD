@@ -2,3 +2,25 @@
   @tailwind components;
   @tailwind utilities;
   
+
+  @layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none; 
+        scrollbar-width: none;  
+  }
+}
+
+  .input-field{
+    @apply w-full p-4 rounded-md focus:ring focus:ring-opacity-75 text-gray-900 focus:ring-blue-600 border-gray-500
+  }
+
+  .dashboard-section{
+    @apply p-6 bg-gray-100 text-gray-900 h-screen w-full
+  }
+
+  .auth-section{
+    @apply p-6 bg-gray-100 text-gray-900 rounded-xl
+  }
