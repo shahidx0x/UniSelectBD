@@ -4,6 +4,7 @@ export const Universities = () => {
   return (
     <>
       <div>
+        <PageHeader />
         <div className="grid grid-col-1 xl:grid-cols-6 md:px-28">
           <div className="col-span-4 xl:col-span-2 py-20 shadow rounded-xl px-5">
             <p className="py-5 text-xl font-bold font-mono">

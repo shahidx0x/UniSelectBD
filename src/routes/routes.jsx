@@ -35,6 +35,10 @@ export const router = createBrowserRouter([
     path: "/dashbord/user",
     element: <UserDashbordLayout />,
     errorElement: <ErrorPage />,
-    children: [],
+    children: [
+      {
+        path: "profile",
+      },
+    ],
   },
 ]);
