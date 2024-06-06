@@ -1,12 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Menubar,
   MenubarContent,
   MenubarItem,
   MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
   MenubarTrigger,
 } from "@/components/ui/menubar";
 
@@ -73,7 +71,7 @@ export const Navbar = () => {
                 <MenubarItem>Accomodation</MenubarItem>
                 <MenubarItem>Education and Living Cost</MenubarItem>
                 <MenubarItem>Health and Safety</MenubarItem>
-                <MenubarItem>Do's and Dont</MenubarItem>
+                <MenubarItem>Dos and Dont</MenubarItem>
                 <MenubarItem>Work Permit</MenubarItem>
                 <MenubarItem>Support Services</MenubarItem>
               </MenubarContent>

@@ -71,7 +71,7 @@ export const AdminNavbar = () => {
                 <MenubarItem>Accomodation</MenubarItem>
                 <MenubarItem>Education and Living Cost</MenubarItem>
                 <MenubarItem>Health and Safety</MenubarItem>
-                <MenubarItem>Do's and Dont</MenubarItem>
+                <MenubarItem>Dos and Dont</MenubarItem>
                 <MenubarItem>Work Permit</MenubarItem>
                 <MenubarItem>Support Services</MenubarItem>
               </MenubarContent>
