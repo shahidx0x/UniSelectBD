@@ -1,4 +1,4 @@
-import Sidebar from "@/components/Sidebar";
+import UniversityManagerSidebar from "@/components/UniversityManagerSidebar";
 import { AdminNavbar } from "@/shared/AdminNavbar";
 
 import { Outlet } from "react-router-dom";
@@ -10,7 +10,7 @@ function UniversityManagmentLayout() {
         <AdminNavbar />
       </div>
       <div className="flex gap-5">
-        <Sidebar />
+        <UniversityManagerSidebar />
         <Outlet />
       </div>
     </div>
