@@ -8,6 +8,8 @@ import UserDashbordLayout from "../layouts/UserDashbordLayout";
 import { Universities } from "@/pages/Universities";
 import Profile from "@/pages/dashboard/users/Profile";
 import WishList from "@/pages/dashboard/users/WishList";
+import UniversityManagmentLayout from "@/layouts/UniversityManagmentAdmin";
+import UniversityInformationManagment from "@/pages/dashboard/university/UniversityInformationManagment";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +47,17 @@ export const router = createBrowserRouter([
       {
         path: "wishlist",
         element: <WishList />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard/admin/university",
+    element: <UniversityManagmentLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "manage/university-info",
+        element: <UniversityInformationManagment />,
       },
     ],
   },
