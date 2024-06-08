@@ -7,6 +7,7 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from "@/components/ui/menubar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -107,6 +108,60 @@ export const Navbar = () => {
             >
               Sign up
             </Link>
+          </li>
+          <li>
+            <Menubar>
+              <MenubarMenu>
+                <MenubarMenu>
+                  <MenubarTrigger>
+                    <Avatar>
+                      <AvatarImage src="https://github.com/shadcn.png" />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                  </MenubarTrigger>
+                  <MenubarContent>
+                    <MenubarItem>
+                      <Link to="/dashboard/users/profile">Profile</Link>
+                    </MenubarItem>
+                    <MenubarItem>
+                      <Link to="/dashboard/users/wishlist">Wishlist</Link>
+                    </MenubarItem>
+                    <MenubarItem></MenubarItem>
+                    <MenubarItem>
+                      <span className="text-red-500">Logout</span>
+                    </MenubarItem>
+                  </MenubarContent>
+                </MenubarMenu>
+              </MenubarMenu>
+            </Menubar>
+          </li>
+          <li>
+            <Menubar>
+              <MenubarMenu>
+                <MenubarMenu>
+                  <MenubarTrigger>
+                    <Avatar>
+                      <AvatarImage src="https://github.com/shadcn.png" />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                  </MenubarTrigger>
+                  <MenubarContent>
+                    <MenubarItem>
+                      <Link to="/dashboard/admin/university/manage/university-info">
+                        Dashboard
+                      </Link>
+                    </MenubarItem>
+                    <MenubarItem>
+                      <Link to="/dashboard/users/wishlist">Wishlist</Link>
+                    </MenubarItem>
+                    <MenubarItem></MenubarItem>
+                    <MenubarItem>
+                      <span className="text-red-500">Logout</span>
+                    </MenubarItem>
+                  </MenubarContent>
+                </MenubarMenu>
+              </MenubarMenu>
+            </Menubar>
           </li>
         </ul>
         <div className="lg:hidden">
