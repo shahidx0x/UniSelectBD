@@ -1,21 +1,13 @@
 import JoditEditor from "jodit-react";
 import { useRef, useState } from "react";
-import ReactImagePickerEditor from "react-image-picker-editor";
+
 import "react-image-picker-editor/dist/index.css";
 
-const config2 = {
-  borderRadius: "8px",
-  language: "en",
-  width: "330px",
-  height: "250px",
-  objectFit: "contain",
-  compressInitial: null,
-};
+import NoticeManagementRow from "./NoticeManagementRow";
+
 const ManageNoticeAndInfoes = () => {
   const editor = useRef(null);
   const [content, setContent] = useState("");
-  const [imageSrc, setImageSrc] = useState();
-  console.log(imageSrc);
 
   const styles = {
     position: "relative",
@@ -23,7 +15,7 @@ const ManageNoticeAndInfoes = () => {
     width: "0px",
     float: "left",
   };
-  const initialImage = "";
+
   return (
     <div>
       <div>
@@ -35,48 +27,23 @@ const ManageNoticeAndInfoes = () => {
           >
             <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-50">
               <div className="space-y-2 col-span-full lg:col-span-1">
-                <p className="font-medium">University Information</p>
+                <p className="font-medium">
+                  University Notice Update and Managment
+                </p>
                 <p className="text-xs">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Adipisci fuga autem eum!
                 </p>
               </div>
               <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-                <div className="flex flex-col md:flex-row gap-10 col-span-3 ">
-                  <div>
-                    <label className="font-medium">
-                      Upload University Logo
-                    </label>
-                    <ReactImagePickerEditor
-                      config={config2}
-                      imageSrcProp={initialImage}
-                      imageChanged={(newDataUri) => {
-                        setImageSrc(newDataUri);
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <label className="font-medium">
-                      Upload University Cover
-                    </label>
-                    <ReactImagePickerEditor
-                      config={config2}
-                      imageSrcProp={initialImage}
-                      imageChanged={(newDataUri) => {
-                        setImageSrc(newDataUri);
-                      }}
-                    />
-                  </div>
-                </div>
-
                 <div className="col-span-full">
                   <label htmlFor="firstname" className="text-sm font-medium">
-                    University Name
+                    Notice Subject
                   </label>
                   <input
-                    id="university name"
+                    id="notice subject"
                     type="text"
-                    placeholder="university name"
+                    placeholder="noteice subject"
                     className="input-field border"
                   />
                   <div data-lastpass-icon-root="" style={styles}></div>
@@ -84,7 +51,7 @@ const ManageNoticeAndInfoes = () => {
 
                 <div className="col-span-full">
                   <label htmlFor="address" className="text-sm font-medium">
-                    Address
+                    Notice Content
                   </label>
                   <JoditEditor
                     ref={editor}
@@ -100,9 +67,33 @@ const ManageNoticeAndInfoes = () => {
             </fieldset>
           </form>
           <div className="flex gap-10 mt-5 justify-end mr-10">
-            <button className="button">save</button>
+            <button className="button">Publish</button>
           </div>
         </section>
+      </div>
+      <div className="hidden sm:flex flex-col justify-start items-start">
+        <table className="w-full whitespace-nowrap">
+          <thead
+            aria-label="table heading"
+            className="w-full h-16 text-left py-6 bg-gray-50 border-gray-200 border-b "
+          >
+            <tr>
+              <th className="text-base font-medium leading-4 text-gray-600 pl-6 lg:pl-20 2xl:pl-40">
+                Title
+              </th>
+              <th className="text-base font-medium leading-4 text-gray-600 pl-6 lg:pl-20 2xl:pl-64">
+                Description
+              </th>
+              <th className="text-base font-medium leading-4 text-gray-600 pl-6 lg:pl-20 2xl:pl-64">
+                Actions
+              </th>
+              <th className="text-base font-medium leading-4 text-gray-600 2xl:pl-36 2xl:pr-20 pr-2 lg:pr-5" />
+            </tr>
+          </thead>
+          <tbody className="w-full text-left">
+            <NoticeManagementRow />
+          </tbody>
+        </table>
       </div>
     </div>
   );
