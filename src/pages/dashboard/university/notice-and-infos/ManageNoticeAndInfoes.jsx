@@ -11,7 +11,7 @@ const config2 = {
   objectFit: "contain",
   compressInitial: null,
 };
-const UniversityFeeInformaton = () => {
+const ManageNoticeAndInfoes = () => {
   const editor = useRef(null);
   const [content, setContent] = useState("");
   const [imageSrc, setImageSrc] = useState();
@@ -31,27 +31,44 @@ const UniversityFeeInformaton = () => {
           <form
             noValidate=""
             action=""
-            className="container flex flex-col mx-auto space-y-12"
+            className="container flex flex-col mx-auto space-y-12 relative"
           >
             <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-50">
               <div className="space-y-2 col-span-full lg:col-span-1">
-                <p className="font-medium">University Fee Informaton</p>
+                <p className="font-medium">University Information</p>
                 <p className="text-xs">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Adipisci fuga autem eum!
                 </p>
               </div>
               <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-                <label className="font-medium">Upload Image</label>
-                <div className="col-span-full">
-                  <ReactImagePickerEditor
-                    config={config2}
-                    imageSrcProp={initialImage}
-                    imageChanged={(newDataUri) => {
-                      setImageSrc(newDataUri);
-                    }}
-                  />
+                <div className="flex flex-col md:flex-row gap-10 col-span-3 ">
+                  <div>
+                    <label className="font-medium">
+                      Upload University Logo
+                    </label>
+                    <ReactImagePickerEditor
+                      config={config2}
+                      imageSrcProp={initialImage}
+                      imageChanged={(newDataUri) => {
+                        setImageSrc(newDataUri);
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label className="font-medium">
+                      Upload University Cover
+                    </label>
+                    <ReactImagePickerEditor
+                      config={config2}
+                      imageSrcProp={initialImage}
+                      imageChanged={(newDataUri) => {
+                        setImageSrc(newDataUri);
+                      }}
+                    />
+                  </div>
                 </div>
+
                 <div className="col-span-full">
                   <label htmlFor="firstname" className="text-sm font-medium">
                     University Name
@@ -82,10 +99,13 @@ const UniversityFeeInformaton = () => {
               </div>
             </fieldset>
           </form>
+          <div className="flex gap-10 mt-5 justify-end mr-10">
+            <button className="button">save</button>
+          </div>
         </section>
       </div>
     </div>
   );
 };
 
-export default UniversityFeeInformaton;
+export default ManageNoticeAndInfoes;

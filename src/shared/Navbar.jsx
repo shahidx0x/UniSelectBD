@@ -148,13 +148,20 @@ export const Navbar = () => {
                   <MenubarContent>
                     <MenubarItem>
                       <Link to="/dashboard/admin/university/manage/university-info">
-                        Dashboard
+                        University Information
                       </Link>
                     </MenubarItem>
                     <MenubarItem>
-                      <Link to="/dashboard/users/wishlist">Wishlist</Link>
+                      <Link to="/dashboard/admin/university/manage/courses">
+                        Manage Courses and Programs
+                      </Link>
                     </MenubarItem>
-                    <MenubarItem></MenubarItem>
+                    <MenubarItem>
+                      <Link to="/dashboard/admin/university/manage/notices-and-infos">
+                        Manage Notice and Infos
+                      </Link>
+                    </MenubarItem>
+
                     <MenubarItem>
                       <span className="text-red-500">Logout</span>
                     </MenubarItem>

@@ -9,7 +9,9 @@ import { Universities } from "@/pages/Universities";
 import Profile from "@/pages/dashboard/users/Profile";
 import WishList from "@/pages/dashboard/users/WishList";
 import UniversityManagmentLayout from "@/layouts/UniversityManagmentAdmin";
-import UniversityInformationManagment from "@/pages/dashboard/university/UniversityInformationManagment";
+import UniversityInfoTab from "@/pages/dashboard/university/manages/UniversityInfoTab";
+import CoursesManagment from "@/pages/dashboard/university/courses/CoursesManagment";
+import ManageNoticeAndInfoes from "@/pages/dashboard/university/notice-and-infos/ManageNoticeAndInfoes";
 
 export const router = createBrowserRouter([
   {
@@ -57,7 +59,15 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "manage/university-info",
-        element: <UniversityInformationManagment />,
+        element: <UniversityInfoTab />,
+      },
+      {
+        path: "manage/courses",
+        element: <CoursesManagment />,
+      },
+      {
+        path: "manage/notices-and-infos",
+        element: <ManageNoticeAndInfoes />,
       },
     ],
   },
