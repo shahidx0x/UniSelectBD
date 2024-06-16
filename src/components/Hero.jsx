@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <div className="relative bg-deep-purple-accent-400">
+    <div className="relative bg-[url('https://wallpaper.forfun.com/fetch/2d/2df221fa0f6572f21983ea335d8de50b.jpeg')] bg-cover">
       <div className="absolute inset-x-0 bottom-0">
         <svg
           viewBox="0 0 224 12"

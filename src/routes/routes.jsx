@@ -12,6 +12,8 @@ import UniversityManagmentLayout from "@/layouts/UniversityManagmentAdmin";
 import UniversityInfoTab from "@/pages/dashboard/university/manages/UniversityInfoTab";
 import CoursesManagment from "@/pages/dashboard/university/courses/CoursesManagment";
 import ManageNoticeAndInfoes from "@/pages/dashboard/university/notice-and-infos/ManageNoticeAndInfoes";
+import UniversityInformation from "@/pages/UniversityInformation";
+import AdminLayout from "@/layouts/AdminLayout";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path: "/universities",
         element: <Universities />,
+      },
+      {
+        path: "/university/information",
+        element: <UniversityInformation />,
       },
     ],
   },
@@ -68,6 +74,21 @@ export const router = createBrowserRouter([
       {
         path: "manage/notices-and-infos",
         element: <ManageNoticeAndInfoes />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard/admin",
+    element: <AdminLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "manage/users",
+        element: <UniversityInfoTab />,
+      },
+      {
+        path: "manage/university",
+        element: <CoursesManagment />,
       },
     ],
   },
