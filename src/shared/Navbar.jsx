@@ -167,7 +167,7 @@ export const Navbar = () => {
                   </MenubarTrigger>
                   <MenubarContent>
                     <MenubarItem>
-                      <Link to="/dashboard/admin/university/manage/university-info">
+                      <Link to="/dashboard/admin/manage/users">
                         Admin Dashboard
                       </Link>
                     </MenubarItem>
