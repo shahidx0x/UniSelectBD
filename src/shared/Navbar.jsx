@@ -121,12 +121,8 @@ export const Navbar = () => {
                   </MenubarTrigger>
                   <MenubarContent>
                     <MenubarItem>
-                      <Link to="/dashboard/users/profile">Profile</Link>
+                      <Link to="/dashboard/users/profile">User Dashboard</Link>
                     </MenubarItem>
-                    <MenubarItem>
-                      <Link to="/dashboard/users/wishlist">Wishlist</Link>
-                    </MenubarItem>
-                    <MenubarItem></MenubarItem>
                     <MenubarItem>
                       <span className="text-red-500">Logout</span>
                     </MenubarItem>
@@ -148,13 +144,34 @@ export const Navbar = () => {
                   <MenubarContent>
                     <MenubarItem>
                       <Link to="/dashboard/admin/university/manage/university-info">
-                        Dashboard
+                        University Dashboard
                       </Link>
                     </MenubarItem>
                     <MenubarItem>
-                      <Link to="/dashboard/users/wishlist">Wishlist</Link>
+                      <span className="text-red-500">Logout</span>
                     </MenubarItem>
-                    <MenubarItem></MenubarItem>
+                  </MenubarContent>
+                </MenubarMenu>
+              </MenubarMenu>
+            </Menubar>
+          </li>
+          <li>
+            <Menubar>
+              <MenubarMenu>
+                <MenubarMenu>
+                  <MenubarTrigger>
+                    <Avatar>
+                      <AvatarImage src="https://github.com/shadcn.png" />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                  </MenubarTrigger>
+                  <MenubarContent>
+                    <MenubarItem>
+                      <Link to="/dashboard/admin/university/manage/university-info">
+                        Admin Dashboard
+                      </Link>
+                    </MenubarItem>
+
                     <MenubarItem>
                       <span className="text-red-500">Logout</span>
                     </MenubarItem>

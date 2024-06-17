@@ -11,18 +11,13 @@ const config2 = {
   objectFit: "contain",
   compressInitial: null,
 };
-const UniversityFeeInformaton = () => {
+const UniversityCoursesInformation = () => {
   const editor = useRef(null);
   const [content, setContent] = useState("");
   const [imageSrc, setImageSrc] = useState();
   console.log(imageSrc);
 
-  const styles = {
-    position: "relative",
-    height: "0px",
-    width: "0px",
-    float: "left",
-  };
+
   const initialImage = "";
   return (
     <div>
@@ -35,7 +30,7 @@ const UniversityFeeInformaton = () => {
           >
             <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-gray-50">
               <div className="space-y-2 col-span-full lg:col-span-1">
-                <p className="font-medium">University Fee Informaton</p>
+                <p className="font-medium">University Courses Information</p>
                 <p className="text-xs">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Adipisci fuga autem eum!
@@ -51,18 +46,6 @@ const UniversityFeeInformaton = () => {
                       setImageSrc(newDataUri);
                     }}
                   />
-                </div>
-                <div className="col-span-full">
-                  <label htmlFor="firstname" className="text-sm font-medium">
-                    University Name
-                  </label>
-                  <input
-                    id="university name"
-                    type="text"
-                    placeholder="university name"
-                    className="input-field border"
-                  />
-                  <div data-lastpass-icon-root="" style={styles}></div>
                 </div>
 
                 <div className="col-span-full">
@@ -82,10 +65,13 @@ const UniversityFeeInformaton = () => {
               </div>
             </fieldset>
           </form>
+          <div className="flex gap-10 mt-5 justify-end mr-10">
+            <button className="button">save</button>
+          </div>
         </section>
       </div>
     </div>
   );
 };
 
-export default UniversityFeeInformaton;
+export default UniversityCoursesInformation;

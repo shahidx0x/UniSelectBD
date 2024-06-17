@@ -18,9 +18,12 @@
   }
 
   .dashboard-section{
-    @apply p-6 bg-gray-100 text-gray-900 h-screen w-full
+    @apply p-6 bg-gray-100 text-gray-900  w-full
   }
 
   .auth-section{
     @apply p-6 bg-gray-100 text-gray-900 rounded-xl
+  }
+  .button{
+    @apply inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none
   }

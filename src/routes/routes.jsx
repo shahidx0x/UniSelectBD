@@ -9,7 +9,16 @@ import { Universities } from "@/pages/Universities";
 import Profile from "@/pages/dashboard/users/Profile";
 import WishList from "@/pages/dashboard/users/WishList";
 import UniversityManagmentLayout from "@/layouts/UniversityManagmentAdmin";
-import UniversityInformationManagment from "@/pages/dashboard/university/UniversityInformationManagment";
+import UniversityInfoTab from "@/pages/dashboard/university/manages/UniversityInfoTab";
+import CoursesManagment from "@/pages/dashboard/university/courses/CoursesManagment";
+import ManageNoticeAndInfoes from "@/pages/dashboard/university/notice-and-infos/ManageNoticeAndInfoes";
+import UniversityInformation from "@/pages/UniversityInformation";
+import AdminLayout from "@/layouts/AdminLayout";
+import ManageUsers from "@/pages/dashboard/admin/ManageUsers";
+import ManageUniversity from "@/pages/dashboard/admin/ManageUniversity";
+import ManageWebsite from "@/pages/dashboard/admin/ManageWebsite";
+import ManageFeedBack from "@/pages/dashboard/admin/ManageFeedBack";
+import ManageAdminsAndRole from "@/pages/dashboard/admin/ManageAdminsAndRole";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: "/universities",
         element: <Universities />,
+      },
+      {
+        path: "/university/information",
+        element: <UniversityInformation />,
       },
     ],
   },
@@ -57,7 +70,42 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "manage/university-info",
-        element: <UniversityInformationManagment />,
+        element: <UniversityInfoTab />,
+      },
+      {
+        path: "manage/courses",
+        element: <CoursesManagment />,
+      },
+      {
+        path: "manage/notices-and-infos",
+        element: <ManageNoticeAndInfoes />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard/admin",
+    element: <AdminLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "manage/users",
+        element: <ManageUsers />,
+      },
+      {
+        path: "manage/university",
+        element: <ManageUniversity />,
+      },
+      {
+        path: "manage/website",
+        element: <ManageWebsite />,
+      },
+      {
+        path: "manage/feedback",
+        element: <ManageFeedBack />,
+      },
+      {
+        path: "manage/admins/and/role",
+        element: <ManageAdminsAndRole />,
       },
     ],
   },

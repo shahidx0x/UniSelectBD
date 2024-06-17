@@ -7,7 +7,7 @@ const Profile = () => {
   };
   return (
     <div>
-      <section className="dashboard-section">
+      <section className="dashboard-section h-screen">
         <form
           noValidate=""
           action=""
