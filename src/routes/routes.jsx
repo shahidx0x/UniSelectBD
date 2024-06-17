@@ -14,6 +14,11 @@ import CoursesManagment from "@/pages/dashboard/university/courses/CoursesManagm
 import ManageNoticeAndInfoes from "@/pages/dashboard/university/notice-and-infos/ManageNoticeAndInfoes";
 import UniversityInformation from "@/pages/UniversityInformation";
 import AdminLayout from "@/layouts/AdminLayout";
+import ManageUsers from "@/pages/dashboard/admin/ManageUsers";
+import ManageUniversity from "@/pages/dashboard/admin/ManageUniversity";
+import ManageWebsite from "@/pages/dashboard/admin/ManageWebsite";
+import ManageFeedBack from "@/pages/dashboard/admin/ManageFeedBack";
+import ManageAdminsAndRole from "@/pages/dashboard/admin/ManageAdminsAndRole";
 
 export const router = createBrowserRouter([
   {
@@ -84,11 +89,23 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "manage/users",
-        element: <UniversityInfoTab />,
+        element: <ManageUsers />,
       },
       {
         path: "manage/university",
-        element: <CoursesManagment />,
+        element: <ManageUniversity />,
+      },
+      {
+        path: "manage/website",
+        element: <ManageWebsite />,
+      },
+      {
+        path: "manage/feedback",
+        element: <ManageFeedBack />,
+      },
+      {
+        path: "manage/admins/and/role",
+        element: <ManageAdminsAndRole />,
       },
     ],
   },

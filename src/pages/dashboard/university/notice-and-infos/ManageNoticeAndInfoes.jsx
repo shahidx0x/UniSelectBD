@@ -1,11 +1,23 @@
 import JoditEditor from "jodit-react";
 import { useRef, useState } from "react";
-
 import "react-image-picker-editor/dist/index.css";
 
 import NoticeManagementRow from "./NoticeManagementRow";
+import ReactImagePickerEditor from "react-image-picker-editor";
+import { ArrowUpCircle } from "lucide-react";
 
 const ManageNoticeAndInfoes = () => {
+  const initialImage = "";
+  const [imageSrc, setImageSrc] = useState();
+  const config2 = {
+    borderRadius: "8px",
+    language: "en",
+    width: "330px",
+    height: "250px",
+    objectFit: "contain",
+    compressInitial: null,
+  };
+  const [addNotice, setAddNotice] = useState(false);
   const editor = useRef(null);
   const [content, setContent] = useState("");
 
@@ -18,8 +30,16 @@ const ManageNoticeAndInfoes = () => {
 
   return (
     <div>
+      <div className={addNotice ? "hidden" : `p-3 border flex justify-end`}>
+        <button
+          onClick={() => setAddNotice(true)}
+          className="border p-3 rounded-lg font-bold bg-indigo-400 text-white"
+        >
+          Add Notice
+        </button>
+      </div>
       <div>
-        <section className="dashboard-section">
+        <section className={addNotice ? `dashboard-section` : "hidden"}>
           <form
             noValidate=""
             action=""
@@ -36,6 +56,22 @@ const ManageNoticeAndInfoes = () => {
                 </p>
               </div>
               <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
+                <label className="font-medium">Upload Image</label>
+                <div className="col-span-full flex justify-between">
+                  <ReactImagePickerEditor
+                    config={config2}
+                    imageSrcProp={initialImage}
+                    imageChanged={(newDataUri) => {
+                      setImageSrc(newDataUri);
+                    }}
+                  />
+                  <div
+                    onClick={() => setAddNotice(false)}
+                    className="bg-indigo-500 w-10 h-10 flex justify-center items-center rounded-full cursor-pointer"
+                  >
+                    <ArrowUpCircle color="white" />
+                  </div>
+                </div>
                 <div className="col-span-full">
                   <label htmlFor="firstname" className="text-sm font-medium">
                     Notice Subject
@@ -71,6 +107,7 @@ const ManageNoticeAndInfoes = () => {
           </div>
         </section>
       </div>
+
       <div className="hidden sm:flex flex-col justify-start items-start">
         <table className="w-full whitespace-nowrap">
           <thead
