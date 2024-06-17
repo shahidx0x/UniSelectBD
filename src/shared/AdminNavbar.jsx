@@ -167,7 +167,9 @@ export const AdminNavbar = () => {
                   </MenubarTrigger>
                   <MenubarContent>
                     <MenubarItem>
-                      <Link to="/dashboard/admin">Admin Dashboard</Link>
+                      <Link to="/dashboard/admin/manage/users">
+                        Admin Dashboard
+                      </Link>
                     </MenubarItem>
 
                     <MenubarItem>

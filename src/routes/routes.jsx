@@ -19,6 +19,8 @@ import ManageUniversity from "@/pages/dashboard/admin/ManageUniversity";
 import ManageWebsite from "@/pages/dashboard/admin/ManageWebsite";
 import ManageFeedBack from "@/pages/dashboard/admin/ManageFeedBack";
 import ManageAdminsAndRole from "@/pages/dashboard/admin/ManageAdminsAndRole";
+import UniversitySignupRequest from "@/pages/UniversitySignupRequest";
+import RegistrationSelect from "@/pages/RegistrationSelect";
 
 export const router = createBrowserRouter([
   {
@@ -35,7 +37,7 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/registration",
+        path: "/registration/user",
         element: <Registration />,
       },
       {
@@ -45,6 +47,14 @@ export const router = createBrowserRouter([
       {
         path: "/university/information",
         element: <UniversityInformation />,
+      },
+      {
+        path: "/university/registration/request",
+        element: <UniversitySignupRequest />,
+      },
+      {
+        path: "/registration",
+        element: <RegistrationSelect />,
       },
     ],
   },
