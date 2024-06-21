@@ -32,18 +32,18 @@ export const authServiceApi = createApi({
       }),
     }),
 
-    register_university: builder.mutation({
+    registerUniversity: builder.mutation({
       query: (universityInfo) => ({
-        url: "register",
+        url: "register/university",
         method: "POST",
         body: universityInfo,
       }),
     }),
-
-    getUserProfile: builder.query({
-      query: () => "profile",
-    }),
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation } = authServiceApi;
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useRegisterUniversityMutation,
+} = authServiceApi;

@@ -1,3 +1,4 @@
+import { toastOption } from "@/config/toast.config";
 import useForm from "@/hooks/useForm";
 import { setCredentials } from "@/redux/features/AuthSlice";
 import { useLoginMutation } from "@/redux/services/AuthService";
@@ -32,7 +33,11 @@ export const Login = () => {
   };
   return (
     <div className="relative">
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={toastOption}
+      />
       <img
         src="https://gla.ac.in/blog/wp-content/uploads/2023/06/Reasons-why-higher-education-needs-to-be-highlighted.jpg"
         className="absolute inset-0 object-cover w-full h-full"

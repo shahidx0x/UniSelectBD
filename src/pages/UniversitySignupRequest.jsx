@@ -1,6 +1,42 @@
+import { toastOption } from "@/config/toast.config";
+import useForm from "@/hooks/useForm";
+import { useRegisterUniversityMutation } from "@/redux/services/AuthService";
+import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+
 const UniversitySignupRequest = () => {
+  const navigate = useNavigate();
+  const initialValues = {
+    full_name: "",
+    email: "",
+    contactNumber: "",
+    address: "",
+  };
+  const { formData, handleChange, handleSubmit } = useForm(initialValues);
+  const [register] = useRegisterUniversityMutation();
+
+  const submitForm = async () => {
+    try {
+      const result = await toast.promise(register(formData).unwrap(), {
+        loading: "Please wait...",
+        success: (
+          <b>Register success ! Please Check Mail for Admin Confirmfation</b>
+        ),
+        error: <b>Login Failed</b>,
+      });
+      console.log("Login successful:", result.data);
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error(error.data?.message || "An unexpected error occurred");
+    }
+  };
   return (
     <div>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={toastOption}
+      />
       <div className="relative">
         <img
           src="https://www.openaccessgovernment.org/wp-content/uploads/2023/05/iStock-1138138146-scaled.jpg"
@@ -41,22 +77,24 @@ const UniversitySignupRequest = () => {
                   <h3 className="mb-4 text-xl underline font-semibold sm:text-center sm:mb-6 sm:text-2xl">
                     University Registration Request
                   </h3>
-                  <form>
+                  <form onSubmit={handleSubmit(submitForm)}>
                     <div className="grid grid-cols-1 gap-2">
                       <div className="mb-1 sm:mb-2">
                         <label
-                          htmlFor="firstName"
+                          htmlFor="fullName"
                           className="inline-block mb-1 font-medium"
                         >
-                          Representitive Full Name
+                          Representative Full Name
                         </label>
                         <input
-                          placeholder="John"
+                          placeholder="John Doe"
                           required
                           type="text"
                           className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                          id="firstName"
-                          name="firstName"
+                          id="fullName"
+                          name="full_name"
+                          value={formData.fullName}
+                          onChange={handleChange}
                         />
                       </div>
 
@@ -70,16 +108,18 @@ const UniversitySignupRequest = () => {
                         <input
                           placeholder="john.doe@example.org"
                           required
-                          type="text"
+                          type="email"
                           className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                           id="email"
                           name="email"
+                          value={formData.email}
+                          onChange={handleChange}
                         />
                       </div>
 
                       <div className="mb-1 sm:mb-2">
                         <label
-                          htmlFor="firstName"
+                          htmlFor="contactNumber"
                           className="inline-block mb-1 font-medium"
                         >
                           University Contact Number
@@ -89,25 +129,29 @@ const UniversitySignupRequest = () => {
                           required
                           type="text"
                           className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                          id="firstName"
-                          name="firstName"
+                          id="contactNumber"
+                          name="contactNumber"
+                          value={formData.contactNumber}
+                          onChange={handleChange}
                         />
                       </div>
 
                       <div className="">
                         <label
-                          htmlFor="email"
+                          htmlFor="address"
                           className="inline-block mb-1 font-medium"
                         >
                           University Address
                         </label>
                         <input
-                          placeholder="Dhaka,Bangladesh"
+                          placeholder="Dhaka, Bangladesh"
                           required
                           type="text"
                           className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                          id="email"
-                          name="email"
+                          id="address"
+                          name="address"
+                          value={formData.address}
+                          onChange={handleChange}
                         />
                       </div>
                     </div>
