@@ -21,6 +21,7 @@ import ManageFeedBack from "@/pages/dashboard/admin/ManageFeedBack";
 import ManageAdminsAndRole from "@/pages/dashboard/admin/ManageAdminsAndRole";
 import UniversitySignupRequest from "@/pages/UniversitySignupRequest";
 import RegistrationSelect from "@/pages/RegistrationSelect";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -60,7 +61,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard/users",
-    element: <UserDashbordLayout />,
+    element: (
+      <PrivateRoute allowedRoles={["user"]}>
+        <UserDashbordLayout />
+      </PrivateRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
@@ -75,7 +80,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard/admin/university",
-    element: <UniversityManagmentLayout />,
+    element: (
+      <PrivateRoute allowedRoles={["university-admin"]}>
+        <UniversityManagmentLayout />
+      </PrivateRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
@@ -94,7 +103,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard/admin",
-    element: <AdminLayout />,
+    element: (
+      <PrivateRoute allowedRoles={["admin"]}>
+        <AdminLayout />
+      </PrivateRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {

@@ -2,10 +2,9 @@ import { toastOption } from "@/config/toast.config";
 import useForm from "@/hooks/useForm";
 import { useRegisterUniversityMutation } from "@/redux/services/AuthService";
 import toast, { Toaster } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+
 
 const UniversitySignupRequest = () => {
-  const navigate = useNavigate();
   const initialValues = {
     full_name: "",
     email: "",
