@@ -8,9 +8,12 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useSelector } from "react-redux";
+import { selectCurrentRole } from "@/redux/features/AuthSlice";
 
 export const AdminNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const role = useSelector(selectCurrentRole);
 
   return (
     <div className=" px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 bg-indigo-500">
@@ -88,99 +91,104 @@ export const AdminNavbar = () => {
             </MenubarMenu>
           </Menubar>
         </div>
-        <ul className="flex items-center hidden space-x-8 lg:flex">
-          <li>
-            <Link
-              to="/login"
-              aria-label="Sign in"
-              title="Sign in"
-              className="font-medium tracking-wide text-white transition-colors duration-200 "
-            >
-              Sign in
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/registration"
-              className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-              aria-label="Sign up"
-              title="Sign up"
-            >
-              Sign up
-            </Link>
-          </li>
-          <li>
-            <Menubar>
-              <MenubarMenu>
-                <MenubarMenu>
-                  <MenubarTrigger>
-                    <Avatar>
-                      <AvatarImage src="https://github.com/shadcn.png" />
-                      <AvatarFallback>CN</AvatarFallback>
-                    </Avatar>
-                  </MenubarTrigger>
-                  <MenubarContent>
-                    <MenubarItem>
-                      <Link to="/dashboard/users/profile">User Dashboard</Link>
-                    </MenubarItem>
-                    <MenubarItem>
-                      <span className="text-red-500">Logout</span>
-                    </MenubarItem>
-                  </MenubarContent>
-                </MenubarMenu>
-              </MenubarMenu>
-            </Menubar>
-          </li>
-          <li>
-            <Menubar>
-              <MenubarMenu>
-                <MenubarMenu>
-                  <MenubarTrigger>
-                    <Avatar>
-                      <AvatarImage src="https://github.com/shadcn.png" />
-                      <AvatarFallback>CN</AvatarFallback>
-                    </Avatar>
-                  </MenubarTrigger>
-                  <MenubarContent>
-                    <MenubarItem>
-                      <Link to="/dashboard/admin/university/manage/university-info">
-                        University Dashboard
-                      </Link>
-                    </MenubarItem>
-                    <MenubarItem>
-                      <span className="text-red-500">Logout</span>
-                    </MenubarItem>
-                  </MenubarContent>
-                </MenubarMenu>
-              </MenubarMenu>
-            </Menubar>
-          </li>
-          <li>
-            <Menubar>
-              <MenubarMenu>
-                <MenubarMenu>
-                  <MenubarTrigger>
-                    <Avatar>
-                      <AvatarImage src="https://github.com/shadcn.png" />
-                      <AvatarFallback>CN</AvatarFallback>
-                    </Avatar>
-                  </MenubarTrigger>
-                  <MenubarContent>
-                    <MenubarItem>
-                      <Link to="/dashboard/admin/manage/users">
-                        Admin Dashboard
-                      </Link>
-                    </MenubarItem>
-
-                    <MenubarItem>
-                      <span className="text-red-500">Logout</span>
-                    </MenubarItem>
-                  </MenubarContent>
-                </MenubarMenu>
-              </MenubarMenu>
-            </Menubar>
-          </li>
-        </ul>
+        {!role && (
+          <>
+            <ul className="flex items-center hidden space-x-8 lg:flex">
+              <li>
+                <Link
+                  to="/login"
+                  aria-label="Sign in"
+                  title="Sign in"
+                  className="font-medium tracking-wide text-white transition-colors duration-200 "
+                >
+                  Sign in
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/registration"
+                  className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                  aria-label="Sign up"
+                  title="Sign up"
+                >
+                  Sign up
+                </Link>
+              </li>
+              {role === "user" && (
+                <li>
+                  <Menubar>
+                    <MenubarMenu>
+                      <MenubarTrigger>
+                        <Avatar>
+                          <AvatarImage src="https://github.com/shadcn.png" />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
+                      </MenubarTrigger>
+                      <MenubarContent>
+                        <MenubarItem>
+                          <Link to="/dashboard/users/profile">
+                            User Dashboard
+                          </Link>
+                        </MenubarItem>
+                        <MenubarItem>
+                          <span className="text-red-500">Logout</span>
+                        </MenubarItem>
+                      </MenubarContent>
+                    </MenubarMenu>
+                  </Menubar>
+                </li>
+              )}
+              {role === "university" && (
+                <li>
+                  <Menubar>
+                    <MenubarMenu>
+                      <MenubarTrigger>
+                        <Avatar>
+                          <AvatarImage src="https://github.com/shadcn.png" />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
+                      </MenubarTrigger>
+                      <MenubarContent>
+                        <MenubarItem>
+                          <Link to="/dashboard/admin/university/manage/university-info">
+                            University Dashboard
+                          </Link>
+                        </MenubarItem>
+                        <MenubarItem>
+                          <span className="text-red-500">Logout</span>
+                        </MenubarItem>
+                      </MenubarContent>
+                    </MenubarMenu>
+                  </Menubar>
+                </li>
+              )}
+              {role === "admin" && (
+                <li>
+                  <Menubar>
+                    <MenubarMenu>
+                      <MenubarTrigger>
+                        <Avatar>
+                          <AvatarImage src="https://github.com/shadcn.png" />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
+                      </MenubarTrigger>
+                      <MenubarContent>
+                        <MenubarItem>
+                          <Link to="/dashboard/admin/manage/users">
+                            Admin Dashboard
+                          </Link>
+                        </MenubarItem>
+                        <MenubarItem>
+                          <span className="text-red-500">Logout</span>
+                        </MenubarItem>
+                      </MenubarContent>
+                    </MenubarMenu>
+                  </Menubar>
+                </li>
+              )}
+            </ul>
+          </>
+        )}
         <div className="lg:hidden">
           <button
             aria-label="Open Menu"
