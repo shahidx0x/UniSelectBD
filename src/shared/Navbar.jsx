@@ -115,6 +115,7 @@ export const Navbar = () => {
                         <span
                           onClick={() => {
                             dispatch(logout());
+                            localStorage.removeItem("token");
                             navigate("/login");
                           }}
                           className="text-red-500"
@@ -144,7 +145,16 @@ export const Navbar = () => {
                         </Link>
                       </MenubarItem>
                       <MenubarItem>
-                        <span className="text-red-500">Logout</span>
+                        <span
+                          onClick={() => {
+                            dispatch(logout());
+                            localStorage.removeItem("token");
+                            navigate("/login");
+                          }}
+                          className="text-red-500"
+                        >
+                          Logout
+                        </span>
                       </MenubarItem>
                     </MenubarContent>
                   </MenubarMenu>
@@ -168,7 +178,16 @@ export const Navbar = () => {
                         </Link>
                       </MenubarItem>
                       <MenubarItem>
-                        <span className="text-red-500">Logout</span>
+                        <span
+                          onClick={() => {
+                            dispatch(logout());
+                            localStorage.removeItem("token");
+                            navigate("/login");
+                          }}
+                          className="text-red-500"
+                        >
+                          Logout
+                        </span>
                       </MenubarItem>
                     </MenubarContent>
                   </MenubarMenu>

@@ -25,6 +25,7 @@ export const Login = () => {
       });
       console.log("Login successful:", result.data);
       dispatch(setCredentials(result.data));
+      localStorage.setItem("token", result.data.token);
       navigate("/");
     } catch (error) {
       console.error("Login error:", error);

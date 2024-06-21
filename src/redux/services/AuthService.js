@@ -1,20 +1,9 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const baseUrl = "http://localhost:3000/api/";
-const getToken = () => localStorage.getItem("authToken");
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { baseQuery } from "../BaseQuery";
+
 export const authServiceApi = createApi({
   reducerPath: "authServiceApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl,
-    prepareHeaders: (headers, { endpoint }) => {
-      const token = getToken();
-
-      if (token && endpoint !== "login" && endpoint !== "register") {
-        headers.set("Authorization", `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
-
+  baseQuery: baseQuery,
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (credentials) => ({
