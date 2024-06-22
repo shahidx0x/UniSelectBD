@@ -1,6 +1,6 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const baseUrl = "http://localhost:3000/api/";
+const baseUrl = "https://uniselectexpress.onrender.com/api/";
 
 const getToken = () => localStorage.getItem("token");
 
