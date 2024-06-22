@@ -15,9 +15,8 @@ import toast, { Toaster } from "react-hot-toast";
 const ManageUsers = () => {
   const { data, isLoading, isError } = useGetUserQuery();
   const [updateRole] = useUpdateUserRoleMutation();
-  console.log(data);
+
   const handleRoleChange = async (id, role) => {
-    console.log(id, role);
     toast.promise(updateRole({ id, payload: { role } }), {
       loading: "Updating Role...",
       success: <b>Role changed!</b>,

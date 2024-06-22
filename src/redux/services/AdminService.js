@@ -17,6 +17,7 @@ export const adminServiceApi = createApi({
       }),
       providesTags: ["register-university"],
     }),
+
     deleteRegisterdUniversity: builder.mutation({
       query: ({ id }) => ({
         url: `register/university/${id}`,
@@ -33,6 +34,15 @@ export const adminServiceApi = createApi({
       }),
       invalidatesTags: ["users"],
     }),
+
+    updateUniversityRegistrationStatus: builder.mutation({
+      query: ({ id, payload }) => ({
+        url: `register/university/${id}`,
+        method: "PATCH",
+        body: payload,
+      }),
+      invalidatesTags: ["register-university"],
+    }),
   }),
 });
 
@@ -41,4 +51,5 @@ export const {
   useUpdateUserRoleMutation,
   useGetRegisterUniversityQuery,
   useDeleteRegisterdUniversityMutation,
+  useUpdateUniversityRegistrationStatusMutation,
 } = adminServiceApi;

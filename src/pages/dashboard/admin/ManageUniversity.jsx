@@ -1,6 +1,7 @@
 import {
   useDeleteRegisterdUniversityMutation,
   useGetRegisterUniversityQuery,
+  useUpdateUniversityRegistrationStatusMutation,
 } from "@/redux/services/AdminService";
 import { useRegisterMutation } from "@/redux/services/AuthService";
 import toast, { Toaster } from "react-hot-toast";
@@ -8,6 +9,7 @@ import toast, { Toaster } from "react-hot-toast";
 const ManageUniversity = () => {
   const { data } = useGetRegisterUniversityQuery();
   const [rejectUniversity] = useDeleteRegisterdUniversityMutation();
+  const [updateStatus] = useUpdateUniversityRegistrationStatusMutation();
   const handleReject = (id) => {
     toast.promise(rejectUniversity({ id }), {
       loading: "please wait ....",
@@ -16,12 +18,21 @@ const ManageUniversity = () => {
     });
   };
   const [register] = useRegisterMutation();
-  const handleAccept = (payload, id) => {
+  const handleAccept = async (payload, id) => {
     try {
-      toast.promise(register(payload), {
-        loading: <p>Please wait ...</p>,
-        success: <p>University Admin Registered</p>,
-        error: <p>Something went wrong</p>,
+      register(payload).then((res) => {
+        console.log(res.status);
+        if (res.status !== 201) {
+          toast.error("registration failed");
+        } else {
+          updateStatus({ id, payload: { status: "approved" } }).then((res) => {
+            if (res.status === 200) {
+              toast.success("status update success");
+            } else {
+              toast.error("status update failed ");
+            }
+          });
+        }
       });
     } catch (error) {
       toast.error("something went wrong");

@@ -128,7 +128,7 @@ export const AdminNavbar = () => {
                 </Menubar>
               </li>
             )}
-            {role === "university" && (
+            {role === "university-admin" && (
               <li>
                 <Menubar>
                   <MenubarMenu>
