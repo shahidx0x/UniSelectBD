@@ -1,6 +1,51 @@
+import { toastOption } from "@/config/toast.config";
+import useForm from "@/hooks/useForm";
+import { useRegisterUniversityMutation } from "@/redux/services/AuthService";
+import toast, { Toaster } from "react-hot-toast";
+import { Uploader } from "uploader"; // Installed by "react-uploader".
+import { UploadButton } from "react-uploader";
+import { useState } from "react";
+
+const uploader = Uploader({
+  apiKey: "public_kW15c7pEHsAvmZrfWast8DcUc2Bf",
+});
+const options = { multi: true };
 const UniversitySignupRequest = () => {
+  const initialValues = {
+    permission_latter: "",
+    full_name: "",
+    university_name: "",
+    email: "",
+    contact_number: "",
+    address: "",
+  };
+  const { formData, handleChange, handleSubmit } = useForm(initialValues);
+  const [imageUpload, setImageUpload] = useState(null);
+  const [register] = useRegisterUniversityMutation();
+
+  const submitForm = async () => {
+    if (imageUpload) formData.permission_latter = imageUpload;
+    try {
+      const result = await toast.promise(register(formData).unwrap(), {
+        loading: "Please wait...",
+        success: (
+          <b>Register success ! Please Check Mail for Admin Confirmfation</b>
+        ),
+        error: <b>Login Failed</b>,
+      });
+      console.log("Login successful:", result.data);
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error(error.data?.message || "An unexpected error occurred");
+    }
+  };
   return (
     <div>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={toastOption}
+      />
       <div className="relative">
         <img
           src="https://www.openaccessgovernment.org/wp-content/uploads/2023/05/iStock-1138138146-scaled.jpg"
@@ -41,22 +86,42 @@ const UniversitySignupRequest = () => {
                   <h3 className="mb-4 text-xl underline font-semibold sm:text-center sm:mb-6 sm:text-2xl">
                     University Registration Request
                   </h3>
-                  <form>
+                  <form onSubmit={handleSubmit(submitForm)}>
                     <div className="grid grid-cols-1 gap-2">
                       <div className="mb-1 sm:mb-2">
                         <label
-                          htmlFor="firstName"
+                          htmlFor="fullName"
                           className="inline-block mb-1 font-medium"
                         >
-                          Representitive Full Name
+                          Representative Full Name
                         </label>
                         <input
-                          placeholder="John"
+                          placeholder="John Doe"
                           required
                           type="text"
                           className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                          id="firstName"
-                          name="firstName"
+                          id="fullName"
+                          name="full_name"
+                          value={formData.fullName}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="mb-1 sm:mb-2">
+                        <label
+                          htmlFor="fullName"
+                          className="inline-block mb-1 font-medium"
+                        >
+                          University Name
+                        </label>
+                        <input
+                          placeholder="John Doe University"
+                          required
+                          type="text"
+                          className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
+                          id="university_name"
+                          name="university_name"
+                          value={formData.university_name}
+                          onChange={handleChange}
                         />
                       </div>
 
@@ -70,16 +135,18 @@ const UniversitySignupRequest = () => {
                         <input
                           placeholder="john.doe@example.org"
                           required
-                          type="text"
+                          type="email"
                           className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                           id="email"
                           name="email"
+                          value={formData.email}
+                          onChange={handleChange}
                         />
                       </div>
 
                       <div className="mb-1 sm:mb-2">
                         <label
-                          htmlFor="firstName"
+                          htmlFor="contactNumber"
                           className="inline-block mb-1 font-medium"
                         >
                           University Contact Number
@@ -89,33 +156,60 @@ const UniversitySignupRequest = () => {
                           required
                           type="text"
                           className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                          id="firstName"
-                          name="firstName"
+                          id="contact_number"
+                          name="contact_number"
+                          value={formData.contact_number}
+                          onChange={handleChange}
                         />
                       </div>
 
                       <div className="">
                         <label
-                          htmlFor="email"
+                          htmlFor="address"
                           className="inline-block mb-1 font-medium"
                         >
                           University Address
                         </label>
                         <input
-                          placeholder="Dhaka,Bangladesh"
+                          placeholder="Dhaka, Bangladesh"
                           required
                           type="text"
                           className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                          id="email"
-                          name="email"
+                          id="address"
+                          name="address"
+                          value={formData.address}
+                          onChange={handleChange}
                         />
                       </div>
+                    </div>
+                    <div>
+                      <UploadButton
+                        uploader={uploader}
+                        options={options}
+                        onComplete={(files) =>
+                          setImageUpload(files.map((x) => x.fileUrl).join("\n"))
+                        }
+                      >
+                        {({ onClick }) => (
+                          <button
+                            className={`inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md 4 bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none`}
+                            onClick={onClick}
+                          >
+                            Upload Verified Document
+                          </button>
+                        )}
+                      </UploadButton>
                     </div>
 
                     <div className="mt-4 mb-2 sm:mb-4">
                       <button
                         type="submit"
-                        className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                        disabled={imageUpload ? false : true}
+                        className={`inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md 4 ${
+                          imageUpload
+                            ? "bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700"
+                            : "bg-gray-500 cursor-pointer"
+                        }   focus:shadow-outline focus:outline-none`}
                       >
                         Request University Registration
                       </button>

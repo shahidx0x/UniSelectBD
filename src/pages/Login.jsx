@@ -1,6 +1,44 @@
+import { toastOption } from "@/config/toast.config";
+import useForm from "@/hooks/useForm";
+import { setCredentials } from "@/redux/features/AuthSlice";
+import { useLoginMutation } from "@/redux/services/AuthService";
+import toast, { Toaster } from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 export const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+  const { formData, handleChange, handleSubmit } = useForm(initialValues);
+  const [login] = useLoginMutation();
+
+  const submitForm = async () => {
+    try {
+      const result = await toast.promise(login(formData).unwrap(), {
+        loading: "Please wait...",
+        success: <b>Login success</b>,
+        error: <b>Login Failed</b>,
+      });
+      console.log("Login successful:", result.data);
+      dispatch(setCredentials(result.data));
+      localStorage.setItem("token", result.data.token);
+      navigate("/");
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error(error.data?.message || "An unexpected error occurred");
+    }
+  };
   return (
     <div className="relative">
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={toastOption}
+      />
       <img
         src="https://gla.ac.in/blog/wp-content/uploads/2023/06/Reasons-why-higher-education-needs-to-be-highlighted.jpg"
         className="absolute inset-0 object-cover w-full h-full"
@@ -40,7 +78,7 @@ export const Login = () => {
                 <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
                   Login Here
                 </h3>
-                <form>
+                <form onSubmit={handleSubmit(submitForm)}>
                   <div className="grid grid-cols-1 gap-2">
                     <div className="mb-1 sm:mb-2">
                       <label
@@ -56,6 +94,7 @@ export const Login = () => {
                         className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                         id="email"
                         name="email"
+                        onChange={handleChange}
                       />
                     </div>
 
@@ -71,8 +110,9 @@ export const Login = () => {
                         required
                         type="password"
                         className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                        id="firstName"
-                        name="firstName"
+                        id="password"
+                        name="password"
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
