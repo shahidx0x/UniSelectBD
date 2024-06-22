@@ -192,17 +192,10 @@ const UniversitySignupRequest = () => {
                       >
                         {({ onClick }) => (
                           <button
-                            disabled={imageUpload ? true : false}
-                            className={`inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md 4 ${
-                              !imageUpload
-                                ? "bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700"
-                                : "bg-gray-500 cursor-pointer"
-                            }   focus:shadow-outline focus:outline-none`}
+                            className={`inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md 4 bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none`}
                             onClick={onClick}
                           >
-                            {imageUpload
-                              ? "Document uploaded cant be reversed"
-                              : "Upload Verified Document"}
+                            Upload Verified Document
                           </button>
                         )}
                       </UploadButton>

@@ -19,15 +19,12 @@ export const Registration = () => {
   const [register] = useRegisterMutation();
 
   const submitForm = async () => {
-    console.log("Form Data:", formData);
-
     try {
-      const result = await toast.promise(register(formData).unwrap(), {
+      await toast.promise(register(formData).unwrap(), {
         loading: "Please wait...",
         success: <b>Registration success</b>,
         error: <b>Registration Failed</b>,
       });
-      console.log("Registration successful:", result);
       navigate("/login");
     } catch (error) {
       console.error("Registration error:", error);

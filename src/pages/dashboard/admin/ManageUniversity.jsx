@@ -2,20 +2,30 @@ import {
   useDeleteRegisterdUniversityMutation,
   useGetRegisterUniversityQuery,
 } from "@/redux/services/AdminService";
+import { useRegisterMutation } from "@/redux/services/AuthService";
 import toast, { Toaster } from "react-hot-toast";
 
 const ManageUniversity = () => {
   const { data } = useGetRegisterUniversityQuery();
   const [rejectUniversity] = useDeleteRegisterdUniversityMutation();
   const handleReject = (id) => {
-    toast.promise(
-      rejectUniversity({ id }).then((res) => console.log(res)),
-      {
-        loading: "please wait ....",
-        success: "successfully reject",
-        error: "rejection failed",
-      }
-    );
+    toast.promise(rejectUniversity({ id }), {
+      loading: "please wait ....",
+      success: "successfully reject",
+      error: "rejection failed",
+    });
+  };
+  const [register] = useRegisterMutation();
+  const handleAccept = (payload, id) => {
+    try {
+      toast.promise(register(payload), {
+        loading: <p>Please wait ...</p>,
+        success: <p>University Admin Registered</p>,
+        error: <p>Something went wrong</p>,
+      });
+    } catch (error) {
+      toast.error("something went wrong");
+    }
   };
   return (
     <div className="w-full dashboard-section">
@@ -39,8 +49,8 @@ const ManageUniversity = () => {
                 <th className="p-3">Documents</th>
                 <th className="p-3">Manager Name</th>
                 <th className="p-3">University Name</th>
-                <th className="p-3">Due</th>
-                <th className="p-3">Due</th>
+                <th className="p-3">Address</th>
+                <th className="p-3">Contact Number</th>
                 <th className="p-3">Status</th>
               </tr>
             </thead>
@@ -80,7 +90,24 @@ const ManageUniversity = () => {
                     >
                       <span>Reject</span>
                     </span>
-                    <span className="px-3 py-1 font-semibold rounded-md bg-green-600 text-gray-50 cursor-pointer">
+                    <span
+                      onClick={() =>
+                        handleAccept(
+                          {
+                            first_name: each.full_name,
+                            last_name: "u",
+                            email: each.email,
+                            role: "university-admin",
+                            contact_number: each.contact_number,
+                            gender: "",
+                            address: each.address,
+                            password: "123456",
+                          },
+                          each._id
+                        )
+                      }
+                      className="px-3 py-1 font-semibold rounded-md bg-green-600 text-gray-50 cursor-pointer"
+                    >
                       <span>Approve</span>
                     </span>
                   </td>
