@@ -5,6 +5,11 @@ import { Link } from "react-router-dom";
 export default function UniversityInformation() {
   const editor = useRef(null);
   const [content, setContent] = useState("");
+  const [view, setView] = useState(false);
+  const handlePostReview = () => {
+    console.log("c");
+    setView(false);
+  };
   return (
     <>
       <div className="hidden md:flex bg-[url('https://green.edu.bd/public/images/Student-in-PC.jpg')] bg-cover">
@@ -522,6 +527,7 @@ export default function UniversityInformation() {
             <div>
               <JoditEditor
                 ref={editor}
+                className={view ? "block" : "hidden"}
                 value={content}
                 tabIndex={1}
                 onBlur={(newContent) => setContent(newContent)}
@@ -529,9 +535,21 @@ export default function UniversityInformation() {
                   setContent(newContent);
                 }}
               />
-              <button className="p-3 bg-indigo-500 text-white rounded mt-5">
-                Post a Review
-              </button>
+              {view ? (
+                <button
+                  onClick={() => handlePostReview()}
+                  className="p-3 bg-indigo-500 text-white rounded mt-5"
+                >
+                  Publish Review
+                </button>
+              ) : (
+                <button
+                  onClick={() => setView(true)}
+                  className="p-3 bg-indigo-500 text-white rounded mt-5"
+                >
+                  Post a Review
+                </button>
+              )}
             </div>
           </div>
           <div className="lg:ml-6 lg:mt-0 mt-7 2xl:w-3/12 lg:w-4/12 w-full flex lg:flex-col sm:flex-row flex-col items-center justify-between">
