@@ -46,8 +46,7 @@ export default function Hero() {
             </a>
           </form>
           <p className="max-w-md mb-10 text-xs tracking-wide text-indigo-100 sm:text-sm sm:mx-auto md:mb-16">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque.
+            Search for the better university
           </p>
           <a
             href="/"
