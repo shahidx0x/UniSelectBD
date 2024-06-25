@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function ContactUs() {
   return (
     <>
@@ -33,22 +35,21 @@ export default function ContactUs() {
                     height="24"
                   />
                 </svg>
-                <span className="relative">The</span>
+                <span className="relative">Contact</span>
               </span>{" "}
-              quick, brown fox jumps over a lazy dog
+              us for more information
             </h2>
             <p className="text-base text-gray-700 md:text-lg">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque rem aperiam, eaque ipsa quae.
+              Get in touch with us for any inquiries or assistance you may need.
             </p>
           </div>
           <div className="flex items-stretch justify-center">
             <div className="grid md:grid-cols-2">
               <div className="h-full pr-6">
                 <p className="mt-3 mb-12 text-lg text-gray-600 dark:text-slate-400">
-                  className aptent taciti sociosqu ad litora torquent per
-                  conubia nostra, per inceptos himenaeos. Duis nec ipsum orci.
-                  Ut scelerisque sagittis ante, ac tincidunt sem venenatis ut.
+                  Our team is here to assist you with any questions you have.
+                  Please feel free to reach out to us through the contact form
+                  or visit us in person at our office.
                 </p>
                 <ul className="mb-6 md:mb-0">
                   <li className="flex">
@@ -74,10 +75,10 @@ export default function ContactUs() {
                         Our Address
                       </h3>
                       <p className="text-gray-600 dark:text-slate-400">
-                        1230 Maecenas Street Donec Road
+                        1230 Maecenas Street, Donec Road
                       </p>
                       <p className="text-gray-600 dark:text-slate-400">
-                        New York, EEUU
+                        New York, USA
                       </p>
                     </div>
                   </li>
@@ -108,7 +109,7 @@ export default function ContactUs() {
                         Mobile: +1 (123) 456-7890
                       </p>
                       <p className="text-gray-600 dark:text-slate-400">
-                        Mail: tailnext@gmail.com
+                        Email: tailnext@gmail.com
                       </p>
                     </div>
                   </li>
@@ -154,7 +155,9 @@ export default function ContactUs() {
                       <label
                         htmlFor="name"
                         className="pb-1 text-xs uppercase tracking-wider"
-                      ></label>
+                      >
+                        Name
+                      </label>
                       <input
                         type="text"
                         id="name"
@@ -168,7 +171,9 @@ export default function ContactUs() {
                       <label
                         htmlFor="email"
                         className="pb-1 text-xs uppercase tracking-wider"
-                      ></label>
+                      >
+                        Email Address
+                      </label>
                       <input
                         type="email"
                         id="email"
@@ -182,7 +187,9 @@ export default function ContactUs() {
                       <label
                         htmlFor="textarea"
                         className="pb-1 text-xs uppercase tracking-wider"
-                      ></label>
+                      >
+                        Message
+                      </label>
                       <textarea
                         id="textarea"
                         name="textarea"
