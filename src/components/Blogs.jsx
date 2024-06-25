@@ -1,10 +1,43 @@
+const blogPosts = [
+  {
+    category: "Education",
+    date: "15 June 2024",
+    title: "Top Universities in Bangladesh for 2024",
+    imageSrc:
+      "https://images.pexels.com/photos/3184451/pexels-photo-3184451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    description:
+      "Explore the top universities in Bangladesh for 2024, covering rankings, programs offered, and facilities provided.",
+    link: "/",
+  },
+  {
+    category: "Student Life",
+    date: "20 June 2024",
+    title: "A Day in the Life of a Student in Dhaka",
+    imageSrc:
+      "https://images.pexels.com/photos/3183191/pexels-photo-3183191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    description:
+      "Follow a student in Dhaka through their daily routine, from classes to extracurricular activities and study sessions.",
+    link: "/",
+  },
+  {
+    category: "Study Tips",
+    date: "25 June 2024",
+    title: "Effective Study Techniques for Bangladeshi Students",
+    imageSrc:
+      "https://images.pexels.com/photos/3184452/pexels-photo-3184452.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    description:
+      "Learn proven study techniques tailored for Bangladeshi students, including time management and exam preparation tips.",
+    link: "/",
+  },
+];
+
 const Blogs = () => {
   return (
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
         <div>
           <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
-            Brand new
+            Education in Bangladesh
           </p>
         </div>
         <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
@@ -31,133 +64,57 @@ const Blogs = () => {
                 height="24"
               />
             </svg>
-            <span className="relative">The</span>
+            <span className="relative">Education</span>
           </span>{" "}
-          quick, brown fox jumps over a lazy dog
+          in Bangladesh: Insights and Tips
         </h2>
         <p className="text-base text-gray-700 md:text-lg">
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque rem aperiam, eaque ipsa quae.
+          Discover insightful articles and practical tips to navigate the
+          education landscape in Bangladesh.
         </p>
       </div>
       <div className="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
-        <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
-          <img
-            src="https://images.pexels.com/photos/2408666/pexels-photo-2408666.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500"
-            className="object-cover w-full h-64"
-            alt=""
-          />
-          <div className="p-5 border border-t-0">
-            <p className="mb-3 text-xs font-semibold tracking-wide uppercase">
+        {blogPosts.map((post, index) => (
+          <div
+            key={index}
+            className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm"
+          >
+            <img
+              src={post.imageSrc}
+              className="object-cover w-full h-64"
+              alt=""
+            />
+            <div className="p-5 border border-t-0">
+              <p className="mb-3 text-xs font-semibold tracking-wide uppercase">
+                <a
+                  href="/"
+                  className="transition-colors duration-200 text-blue-gray-900 hover:text-deep-purple-accent-700"
+                  aria-label="Category"
+                  title={post.category}
+                >
+                  {post.category}
+                </a>
+                <span className="text-gray-600">— {post.date}</span>
+              </p>
               <a
-                href="/"
-                className="transition-colors duration-200 text-blue-gray-900 hover:text-deep-purple-accent-700"
+                href={post.link}
                 aria-label="Category"
-                title="traveling"
+                title={post.title}
+                className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
               >
-                traveling
+                {post.title}
               </a>
-              <span className="text-gray-600">— 28 Dec 2020</span>
-            </p>
-            <a
-              href="/"
-              aria-label="Category"
-              title="Visit the East"
-              className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
-            >
-              Visit the East
-            </a>
-            <p className="mb-2 text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit sed quia
-              consequuntur magni voluptatem doloremque.
-            </p>
-            <a
-              href="/"
-              aria-label=""
-              className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
-            >
-              Learn more
-            </a>
-          </div>
-        </div>
-        <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
-          <img
-            src="https://images.pexels.com/photos/447592/pexels-photo-447592.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
-            className="object-cover w-full h-64"
-            alt=""
-          />
-          <div className="p-5 border border-t-0">
-            <p className="mb-3 text-xs font-semibold tracking-wide uppercase">
+              <p className="mb-2 text-gray-700">{post.description}</p>
               <a
-                href="/"
-                className="transition-colors duration-200 text-blue-gray-900 hover:text-deep-purple-accent-700"
-                aria-label="Category"
-                title="traveling"
+                href={post.link}
+                aria-label=""
+                className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
               >
-                traveling
+                Learn more
               </a>
-              <span className="text-gray-600">— 28 Dec 2020</span>
-            </p>
-            <a
-              href="/"
-              aria-label="Category"
-              title="Simple is better"
-              className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
-            >
-              Simple is better
-            </a>
-            <p className="mb-2 text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit sed quia
-              consequuntur magni voluptatem doloremque.
-            </p>
-            <a
-              href="/"
-              aria-label=""
-              className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
-            >
-              Learn more
-            </a>
+            </div>
           </div>
-        </div>
-        <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
-          <img
-            src="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
-            className="object-cover w-full h-64"
-            alt=""
-          />
-          <div className="p-5 border border-t-0">
-            <p className="mb-3 text-xs font-semibold tracking-wide uppercase">
-              <a
-                href="/"
-                className="transition-colors duration-200 text-blue-gray-900 hover:text-deep-purple-accent-700"
-                aria-label="Category"
-                title="traveling"
-              >
-                traveling
-              </a>
-              <span className="text-gray-600">— 28 Dec 2020</span>
-            </p>
-            <a
-              href="/"
-              aria-label="Category"
-              title="Film It!"
-              className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
-            >
-              Film It!
-            </a>
-            <p className="mb-2 text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit sed quia
-              consequuntur magni voluptatem doloremque.
-            </p>
-            <a
-              href="/"
-              aria-label=""
-              className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
-            >
-              Learn more
-            </a>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
