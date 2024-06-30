@@ -1,4 +1,12 @@
+import { selectCurrentUserId } from "@/redux/features/AuthSlice";
+import { useGetUserByIdQuery } from "@/redux/services/UserService";
+import { useSelector } from "react-redux";
+
 const Profile = () => {
+  const userId = useSelector(selectCurrentUserId);
+  const data = useGetUserByIdQuery(userId).data;
+  console.log(data?.data);
+
   const styles = {
     position: "relative",
     height: "0px",
@@ -49,6 +57,7 @@ const Profile = () => {
                   type="text"
                   placeholder="First name"
                   className="input-field"
+                  defaultValue={data?.data?.first_name}
                 />
                 <div data-lastpass-icon-root="" style={styles}></div>
               </div>
@@ -61,6 +70,7 @@ const Profile = () => {
                   type="text"
                   placeholder="Last name"
                   className="input-field"
+                  defaultValue={data?.data?.last_name}
                 />
               </div>
               <div className="col-span-full sm:col-span-3 flex flex-col">
@@ -72,6 +82,7 @@ const Profile = () => {
                   type="email"
                   placeholder="Email"
                   className="input-field"
+                  defaultValue={data?.data?.email}
                 />
               </div>
               <div className="col-span-full sm:col-span-3 flex flex-col">
@@ -83,6 +94,7 @@ const Profile = () => {
                   type="email"
                   placeholder="Contact"
                   className="input-field"
+                  defaultValue={data?.data?.contact}
                 />
               </div>
               <div className="col-span-full">
@@ -94,6 +106,7 @@ const Profile = () => {
                   type="text"
                   placeholder=""
                   className="input-field"
+                  defaultValue={data?.data?.address}
                 />
               </div>
               <div className="col-span-full sm:col-span-2">
@@ -105,6 +118,7 @@ const Profile = () => {
                   type="text"
                   placeholder=""
                   className="input-field"
+                  defaultValue={data?.data?.city}
                 />
               </div>
               <div className="col-span-full sm:col-span-2">
@@ -116,6 +130,7 @@ const Profile = () => {
                   type="text"
                   placeholder=""
                   className="input-field"
+                  defaultValue={data?.data?.state}
                 />
               </div>
               <div className="col-span-full sm:col-span-2">
@@ -127,6 +142,7 @@ const Profile = () => {
                   type="text"
                   placeholder=""
                   className="input-field"
+                  defaultValue={data?.data?.zip}
                 />
               </div>
             </div>
