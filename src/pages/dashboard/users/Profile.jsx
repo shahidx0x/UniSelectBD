@@ -1,11 +1,24 @@
 import { selectCurrentUserId } from "@/redux/features/AuthSlice";
 import { useGetUserByIdQuery } from "@/redux/services/UserService";
 import { useSelector } from "react-redux";
+import ReactImagePickerEditor from "react-image-picker-editor";
+import "react-image-picker-editor/dist/index.css";
+import { useEffect, useState } from "react";
+import useForm from "@/hooks/useForm";
 
+const config2 = {
+  borderRadius: "8px",
+  language: "en",
+  width: "330px",
+  height: "250px",
+  objectFit: "contain",
+  compressInitial: null,
+};
 const Profile = () => {
   const userId = useSelector(selectCurrentUserId);
   const data = useGetUserByIdQuery(userId).data;
-  console.log(data?.data);
+  const [imageSrc, setImageSrc] = useState();
+  const initialImage = imageSrc || data?.data?.image
 
   const styles = {
     position: "relative",
@@ -13,10 +26,33 @@ const Profile = () => {
     width: "0px",
     float: "left",
   };
+  let initialValues = {
+    first_name: '',
+    last_name:'',
+    contact:'',
+    email: "",
+    address:''
+  };
+
+  const { formData, handleChange, handleSubmit } = useForm(initialValues);
+  const submitForm = () => {
+    const fields = ['first_name', 'last_name', 'email', 'contact', 'zip', 'state', 'address'];
+    fields.forEach(field => {
+      if (formData[field] === '') {
+        formData[field] = data?.data?.[field];
+      }
+    });
+    if(imageSrc){
+      formData.image = imageSrc;
+    }
+    console.log(formData);
+  }
+
   return (
     <div>
       <section className="dashboard-section h-screen">
         <form
+        onSubmit={handleSubmit(submitForm)}
           noValidate=""
           action=""
           className="container flex flex-col mx-auto space-y-12"
@@ -29,35 +65,27 @@ const Profile = () => {
                 Adipisci fuga autem eum!
               </p>
             </div>
+            <ReactImagePickerEditor
+                      config={config2}
+                      imageSrcProp={initialImage}
+                      imageChanged={(newDataUri) => {
+                        setImageSrc(newDataUri);
+                      }}
+                    />
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-              <div className="col-span-full">
-                <label htmlFor="bio" className="text-sm">
-                  Photo
-                </label>
-                <div className="flex items-center space-x-2">
-                  <img
-                    src="https://source.unsplash.com/30x30/?random"
-                    alt=""
-                    className="w-10 h-10  rounded-full bg-gray-300"
-                  />
-                  <button
-                    type="button"
-                    className="px-4 py-2 border rounded-md border-gray-800"
-                  >
-                    Change
-                  </button>
-                </div>
-              </div>
+          
               <div className="col-span-full sm:col-span-3">
                 <label htmlFor="firstname" className="text-sm">
                   First name
                 </label>
                 <input
-                  id="firstname"
+                  id="first_name"
+                  name="first_name"
                   type="text"
-                  placeholder="First name"
+                 
                   className="input-field"
                   defaultValue={data?.data?.first_name}
+                  onChange={handleChange}
                 />
                 <div data-lastpass-icon-root="" style={styles}></div>
               </div>
@@ -66,11 +94,13 @@ const Profile = () => {
                   Last name
                 </label>
                 <input
-                  id="lastname"
+                  id="last_name"
+                  name="last_name"
                   type="text"
                   placeholder="Last name"
                   className="input-field"
                   defaultValue={data?.data?.last_name}
+                  onChange={handleChange}
                 />
               </div>
               <div className="col-span-full sm:col-span-3 flex flex-col">
@@ -79,10 +109,12 @@ const Profile = () => {
                 </label>
                 <input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="Email"
                   className="input-field"
                   defaultValue={data?.data?.email}
+                  onChange={handleChange}
                 />
               </div>
               <div className="col-span-full sm:col-span-3 flex flex-col">
@@ -90,11 +122,13 @@ const Profile = () => {
                   Contact
                 </label>
                 <input
-                  id="email"
-                  type="email"
+                  id="contact"
+                  name="contact"
+                  type="text"
                   placeholder="Contact"
                   className="input-field"
                   defaultValue={data?.data?.contact}
+                  onChange={handleChange}
                 />
               </div>
               <div className="col-span-full">
@@ -103,10 +137,12 @@ const Profile = () => {
                 </label>
                 <input
                   id="address"
+                  name="address"
                   type="text"
                   placeholder=""
                   className="input-field"
                   defaultValue={data?.data?.address}
+                  onChange={handleChange}
                 />
               </div>
               <div className="col-span-full sm:col-span-2">
@@ -115,10 +151,12 @@ const Profile = () => {
                 </label>
                 <input
                   id="city"
+                  name="city"
                   type="text"
                   placeholder=""
                   className="input-field"
                   defaultValue={data?.data?.city}
+                  onChange={handleChange}
                 />
               </div>
               <div className="col-span-full sm:col-span-2">
@@ -127,10 +165,12 @@ const Profile = () => {
                 </label>
                 <input
                   id="state"
+                  name="state"
                   type="text"
                   placeholder=""
                   className="input-field"
                   defaultValue={data?.data?.state}
+                  onChange={handleChange}
                 />
               </div>
               <div className="col-span-full sm:col-span-2">
@@ -139,12 +179,15 @@ const Profile = () => {
                 </label>
                 <input
                   id="zip"
+                  name="zip"
                   type="text"
                   placeholder=""
                   className="input-field"
                   defaultValue={data?.data?.zip}
+                  onChange={handleChange}
                 />
               </div>
+              <button type="submit" className="p-4 bg-indigo-400 rounded-md text-white">Save</button>
             </div>
           </fieldset>
         </form>

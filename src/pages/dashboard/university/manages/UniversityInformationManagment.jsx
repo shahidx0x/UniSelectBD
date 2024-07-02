@@ -15,7 +15,7 @@ const UniversityInformationManagment = () => {
   const editor = useRef(null);
   const [content, setContent] = useState("");
   const [imageSrc, setImageSrc] = useState();
-  console.log(imageSrc);
+
 
   const styles = {
     position: "relative",
