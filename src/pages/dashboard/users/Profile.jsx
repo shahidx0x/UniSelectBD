@@ -1,10 +1,14 @@
 import { selectCurrentUserId } from "@/redux/features/AuthSlice";
-import { useGetUserByIdQuery } from "@/redux/services/UserService";
+import {
+  useGetUserByIdQuery,
+  useUpdateUserInfoMutation,
+} from "@/redux/services/UserService";
 import { useSelector } from "react-redux";
 import ReactImagePickerEditor from "react-image-picker-editor";
 import "react-image-picker-editor/dist/index.css";
 import { useEffect, useState } from "react";
 import useForm from "@/hooks/useForm";
+import toast, { Toaster } from "react-hot-toast";
 
 const config2 = {
   borderRadius: "8px",
@@ -17,8 +21,9 @@ const config2 = {
 const Profile = () => {
   const userId = useSelector(selectCurrentUserId);
   const data = useGetUserByIdQuery(userId).data;
+  const [updateInfo] = useUpdateUserInfoMutation();
   const [imageSrc, setImageSrc] = useState();
-  const initialImage = imageSrc || data?.data?.image
+  const initialImage = imageSrc || data?.data?.image;
 
   const styles = {
     position: "relative",
@@ -27,32 +32,47 @@ const Profile = () => {
     float: "left",
   };
   let initialValues = {
-    first_name: '',
-    last_name:'',
-    contact:'',
+    first_name: "",
+    last_name: "",
+    contact: "",
     email: "",
-    address:''
+    address: "",
   };
 
   const { formData, handleChange, handleSubmit } = useForm(initialValues);
   const submitForm = () => {
-    const fields = ['first_name', 'last_name', 'email', 'contact', 'zip', 'state', 'address'];
-    fields.forEach(field => {
-      if (formData[field] === '') {
+    const fields = [
+      "first_name",
+      "last_name",
+      "email",
+      "contact",
+      "zip",
+      "state",
+      "address",
+    ];
+    fields.forEach((field) => {
+      if (formData[field] === "") {
         formData[field] = data?.data?.[field];
       }
     });
-    if(imageSrc){
+    if (imageSrc) {
       formData.image = imageSrc;
     }
+
     console.log(formData);
-  }
+    toast.promise(updateInfo({ id: userId, payload: { ...formData } }),{
+      loading:<p>please wait ... </p>,
+      success:<p>user info updated</p>,
+      error:<p>some thing went wrong</p>
+    });
+  };
 
   return (
     <div>
+      <Toaster position="top-right" reverseOrder={false} />
       <section className="dashboard-section h-screen">
         <form
-        onSubmit={handleSubmit(submitForm)}
+          onSubmit={handleSubmit(submitForm)}
           noValidate=""
           action=""
           className="container flex flex-col mx-auto space-y-12"
@@ -66,14 +86,13 @@ const Profile = () => {
               </p>
             </div>
             <ReactImagePickerEditor
-                      config={config2}
-                      imageSrcProp={initialImage}
-                      imageChanged={(newDataUri) => {
-                        setImageSrc(newDataUri);
-                      }}
-                    />
+              config={config2}
+              imageSrcProp={initialImage}
+              imageChanged={(newDataUri) => {
+                setImageSrc(newDataUri);
+              }}
+            />
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-          
               <div className="col-span-full sm:col-span-3">
                 <label htmlFor="firstname" className="text-sm">
                   First name
@@ -82,7 +101,6 @@ const Profile = () => {
                   id="first_name"
                   name="first_name"
                   type="text"
-                 
                   className="input-field"
                   defaultValue={data?.data?.first_name}
                   onChange={handleChange}
@@ -187,7 +205,12 @@ const Profile = () => {
                   onChange={handleChange}
                 />
               </div>
-              <button type="submit" className="p-4 bg-indigo-400 rounded-md text-white">Save</button>
+              <button
+                type="submit"
+                className="p-4 bg-indigo-400 rounded-md text-white"
+              >
+                Save
+              </button>
             </div>
           </fieldset>
         </form>

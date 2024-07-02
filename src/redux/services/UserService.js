@@ -9,7 +9,15 @@ export const userServiceApi = createApi({
       query: (id) => ({ url: `users/${id}` }),
       providesTags: ["users"],
     }),
+    updateUserInfo: builder.mutation({
+      query: ({ id, payload }) => ({
+        url: `users/${id}`,
+        method: "PATCH",
+        body: payload,
+      }),
+      invalidatesTags: ["users"],
+    }),
   }),
 });
 
-export const { useGetUserByIdQuery } = userServiceApi;
+export const { useGetUserByIdQuery,useUpdateUserInfoMutation } = userServiceApi;

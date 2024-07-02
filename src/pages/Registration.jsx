@@ -9,7 +9,7 @@ export const Registration = () => {
     first_name: "",
     last_name: "",
     email: "",
-    contact_number: "",
+    contact: "",
     gender: "",
     address: "",
     password: "",
@@ -130,7 +130,7 @@ export const Registration = () => {
 
                     <div className="mb-1 sm:mb-2">
                       <label
-                        htmlFor="contact_number"
+                        htmlFor="contact"
                         className="inline-block mb-1 font-medium"
                       >
                         Contact Number
@@ -140,8 +140,8 @@ export const Registration = () => {
                         required
                         type="text"
                         className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                        id="contact_number"
-                        name="contact_number"
+                        id="contact"
+                        name="contact"
                         onChange={handleChange}
                       />
                     </div>
